@@ -23,7 +23,7 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
             # Assign the role to the member
             await member.add_roles(role)
             # Send a private message to the member
-            await member.send(f'Your role has been changed to {role.name}!')
+            await member.send(f'I just assigned the role "{role.name}" to you!')
         # Check if the reaction was added with a different emoji
         elif str(payload.emoji) == '2️⃣':
             # Get the member who added the reaction
@@ -34,7 +34,7 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
             # Assign the role to the member
             await member.add_roles(role)
             # Send a private message to the member
-            await member.send(f'Your role has been changed to {role.name}!')
+            await member.send(f'I just assigned the role "{role.name}" to you!')
 
 @bot.event
 async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
@@ -50,7 +50,7 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
             # Remove the role from the member
             await member.remove_roles(role)
             # Send a private message to the member
-            await member.send(f'Your role has been removed!')
+            await member.send(f'I just removed your "{role.name}" role!')
         # Check if the reaction was removed with a different emoji
         elif str(payload.emoji) == '2️⃣':
             # Get the member who removed the reaction
@@ -61,7 +61,7 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
             # Remove the role from the member
             await member.remove_roles(role)
             # Send a private message to the member
-            await member.send(f'Your role has been removed!')
+            await member.send(f'I just removed your "{role.name}" role!')
 
 with open('token', 'r') as tkn:
     token = str(tkn.read())
