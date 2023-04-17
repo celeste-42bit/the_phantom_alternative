@@ -9,6 +9,13 @@ intents.presences = True
 
 bot = commands.Bot(intents = intents, command_prefix='!')
 
+@bot.command
+async def test(ctx, args):
+    await ctx.send(str(args))
+    print('Done!')
+
+
+
 @bot.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
     # Check if the reaction was added to the correct message
@@ -62,6 +69,8 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent):
             await member.remove_roles(role)
             # Send a private message to the member
             await member.send(f'I just removed your "{role.name}" role!')
+
+bot.add_command(test)  # registering a .ext command
 
 with open('token', 'r') as tkn:
     token = str(tkn.read())
