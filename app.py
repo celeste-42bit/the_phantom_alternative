@@ -22,6 +22,17 @@ async def embed(ctx, title, description, color, field_name, field_content, foote
     embed.set_footer(text=str(footer))
     await ctx.send(embed=embed)
 
+''' made other options optional, by ChatGPT
+@bot.command(name='embed')
+async def embed(ctx, title, description="", color="000000", field_name="", field_content="", footer=""):
+    embed = discord.Embed(title=str(title), description=str(description), color=discord.Color(int(color, 16)))
+    if field_name and field_content:
+        embed.add_field(name=str(field_name), value=str(field_content), inline=False)
+    if footer:
+        embed.set_footer(text=str(footer))
+    await ctx.send(embed=embed)
+'''
+
 @bot.command(name='say')
 async def say(ctx, arg):
     await ctx.send(arg)
